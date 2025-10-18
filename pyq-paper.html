@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Papers - SSC Prep Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a365d;
+            --secondary: #2d3748;
+            --accent: #3182ce;
+            --light: #f7fafc;
+            --success: #38a169;
+            --warning: #dd6b20;
+            --danger: #e53e3e;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.5;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 12px;
+        }
+
+        /* Compact Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            font-size: 20px;
+            margin-right: 8px;
+            color: var(--accent);
+        }
+
+        .logo h1 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 13px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a i {
+            margin-right: 4px;
+            font-size: 14px;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        nav ul li a.active {
+            color: var(--accent);
+            position: relative;
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        /* Compact Breadcrumb */
+        .breadcrumb {
+            background: white;
+            padding: 8px 0;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            font-size: 12px;
+        }
+
+        .breadcrumb-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb-content a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .breadcrumb-content i {
+            margin: 0 8px;
+            color: var(--text-light);
+            font-size: 10px;
+        }
+
+        /* Compact Page Title */
+        .page-title {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .page-title h1 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .page-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 13px;
+        }
+
+        /* Compact Stats Cards */
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 6px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s;
+            border-left: 3px solid var(--accent);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 16px;
+            background: rgba(49, 130, 206, 0.1);
+            color: var(--accent);
+        }
+
+        .stat-content {
+            flex: 1;
+        }
+
+        .stat-number {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        /* Compact Quick Search */
+        .quick-search {
+            background: white;
+            border-radius: 6px;
+            padding: 10px 15px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border);
+        }
+
+        .quick-search i {
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .quick-search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .quick-search input::placeholder {
+            color: var(--text-light);
+        }
+
+        /* Compact Category Tabs */
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+            justify-content: center;
+        }
+
+        .category-tab {
+            padding: 8px 16px;
+            background: white;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .category-tab i {
+            margin-right: 6px;
+            font-size: 12px;
+        }
+
+        .category-tab:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        .category-tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Compact Filter Section */
+        .filter-section {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 18px;
+            border: 1px solid var(--border);
+        }
+
+        .filter-title {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-title i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--text);
+            font-size: 12px;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: white;
+            font-size: 13px;
+            color: var(--text);
+            transition: border-color 0.3s;
+        }
+
+        .filter-group select:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        /* Compact Papers Grid */
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .paper-card {
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .paper-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .paper-card-header {
+            background: var(--primary);
+            color: white;
+            padding: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .paper-card-header h3 {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .paper-badge {
+            background: var(--accent);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .paper-card-content {
+            padding: 15px;
+        }
+
+        .paper-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        .paper-meta-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .paper-meta-item i {
+            margin-right: 4px;
+            color: var(--accent);
+        }
+
+        .paper-card-content p {
+            margin-bottom: 15px;
+            color: var(--text);
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .paper-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            flex: 1;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .btn i {
+            margin-right: 4px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            background: white;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Compact Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .pagination a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            margin: 0 4px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            font-size: 12px;
+        }
+
+        .pagination a.active, .pagination a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Compact Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 30px 0 10px;
+            margin-top: 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .footer-column h3 {
+            font-size: 14px;
+            margin-bottom: 12px;
+            position: relative;
+            padding-bottom: 6px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 25px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 6px;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .footer-column ul li a i {
+            margin-right: 6px;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 11px;
+        }
+
+        /* UNIQUE BOTTOM MENU */
+        .bottom-menu {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-top: 1px solid var(--border);
+        }
+
+        .bottom-menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-light);
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bottom-menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(49, 130, 206, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .bottom-menu-item:hover::before {
+            left: 100%;
+        }
+
+        .bottom-menu-item:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .bottom-menu-item i {
+            font-size: 16px;
+            margin-bottom: 2px;
+            transition: all 0.3s;
+        }
+
+        .bottom-menu-item:hover i {
+            transform: scale(1.1);
+        }
+
+        .bottom-menu-item span {
+            font-size: 10px;
+            font-weight: 500;
+        }
+
+        .bottom-menu-item.active {
+            color: var(--accent);
+            background: rgba(49, 130, 206, 0.1);
+        }
+
+        .bottom-menu-item.active i {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .category-tabs {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 8px;
+            }
+
+            .category-tab {
+                white-space: nowrap;
+            }
+
+            .filter-options {
+                flex-direction: column;
+            }
+            
+            .filter-group {
+                width: 100%;
+            }
+            
+            .papers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .paper-actions {
+                flex-direction: column;
+            }
+            
+            .stats-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .bottom-menu {
+                padding: 6px 0;
+            }
+
+            .bottom-menu-item {
+                padding: 4px 6px;
+            }
+
+            .bottom-menu-item i {
+                font-size: 14px;
+            }
+
+            .bottom-menu-item span {
+                font-size: 9px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .bottom-menu-item span {
+                font-size: 8px;
+            }
+
+            .bottom-menu-item i {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>SSC <span>Prep Pro</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index-home.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> course</a></li>
+                    <li><a href="#"><i class="fas fa-list-alt"></i> Syllabus</a></li>
+                    <li><a href="pyq-paper.html" class="active"><i class="fas fa-file-alt"></i> PYQ Papers</a></li>
+                    <li><a href="#"><i class="fas fa-blog"></i> Blog</a></li>
+                    <li><a href="contact.html"><i class="fas fa-phone-alt"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container breadcrumb-content">
+            <a href="index-home.html">Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>Previous Year Papers</span>
+        </div>
+    </div>
+
+    <!-- Page Title -->
+    <div class="container">
+        <div class="page-title">
+            <h1>Previous Year Question Papers</h1>
+            <p>Access a comprehensive collection of previous year question papers with detailed solutions</p>
+        </div>
+    </div>
+
+
+            
+            
+              <!-- Stats Cards -->
+    <div class="container">
+        <div class="stats-cards">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number">520+</div>
+                    <div class="stat-label">PYQ Papers</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Solved Papers</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Students</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+    <!-- Quick Search -->
+    <div class="container">
+        <div class="quick-search">
+            <i class="fas fa-search"></i>
+            <input type="text" id="search-input" placeholder="Search for papers by exam name, year, or topic...">
+        </div>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="container">
+        <div class="category-tabs">
+            <a href="all-exams.html" class="category-tab active" data-category="all">
+                <i class="fas fa-layer-group"></i> All Exams
+            </a>
+            <a href="ssc.html" class="category-tab" data-category="ssc">
+                <i class="fas fa-university"></i> SSC
+            </a>
+            <a href="railway.html" class="category-tab" data-category="railway">
+                <i class="fas fa-train"></i> Railway
+            </a>
+            <a href="banking.html" class="category-tab" data-category="banking">
+                <i class="fas fa-landmark"></i> Banking
+            </a>
+            <a href="defense.html" class="category-tab" data-category="defense">
+                <i class="fas fa-shield-alt"></i> Defense
+            </a>
+            <a href="medical.html" class="category-tab" data-category="medical">
+                <i class="fas fa-stethoscope"></i> Medical
+            </a>
+        </div>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="container">
+        <div class="filter-section">
+            <h3 class="filter-title"><i class="fas fa-filter"></i> Filter Papers</h3>
+            <div class="filter-options">
+                <div class="filter-group">
+                    <label for="exam-type">Exam Type</label>
+                    <select id="exam-type">
+                        <option value="all">All Exams</option>
+                        <optgroup label="SSC">
+                            <option value="ssc-cgl">SSC CGL</option>
+                            <option value="ssc-cgl-tier2">SSC CGL Tier 2</option>
+                            <option value="ssc-chsl">SSC CHSL</option>
+                            <option value="ssc-chsl-tier2">SSC CHSL Tier 2</option>
+                            <option value="ssc-mts">SSC MTS</option>
+                            <option value="ssc-je">SSC JE</option>
+                        </optgroup>
+                        <optgroup label="Railway">
+                            <option value="rrb-ntpc">RRB NTPC</option>
+                            <option value="rrb-group-d">RRB Group D</option>
+                            <option value="rrb-je">RRB JE</option>
+                            <option value="rrb-alp">RRB ALP</option>
+                        </optgroup>
+                        <optgroup label="Banking">
+                            <option value="ibps-po">IBPS PO</option>
+                            <option value="ibps-clerk">IBPS Clerk</option>
+                            <option value="sbi-po">SBI PO</option>
+                            <option value="sbi-clerk">SBI Clerk</option>
+                        </optgroup>
+                        <optgroup label="Defense">
+                            <option value="cds">CDS</option>
+                            <option value="nda">NDA</option>
+                            <option value="afcat">AFCAT</option>
+                            <option value="ssb">SSB</option>
+                        </optgroup>
+                        <optgroup label="Medical">
+                            <option value="neet">NEET</option>
+                            <option value="aiims">AIIMS</option>
+                            <option value="pgimer">PGIMER</option>
+                            <option value="fmge">FMGE</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="year">Year</label>
+                    <select id="year">
+                        <option value="all">All Years</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="language">Language</label>
+                    <select id="language">
+                        <option value="all">All Languages</option>
+                        <option value="english">English</option>
+                        <option value="hindi">Hindi</option>
+                        <option value="bilingual">Bilingual</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Papers Grid -->
+    <div class="container">
+        <div class="papers-grid" id="papers-container">
+            <!-- Papers will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="container">
+        <div class="pagination">
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#"><i class="fas fa-chevron-right"></i></a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index-home.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-book"></i> Courses</a></li>
+                        <li><a href=""><i class="fas fa-file-alt"></i>Mock test</a></li>
+                        <li><a href="#"><i class="fas fa-chart-bar"></i> Performance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Exams</h3>
+                    <ul>
+                        <li><a href="ssc.html"><i class="fas fa-university"></i> SSC Exams</a></li>
+                        <li><a href="railway.html"><i class="fas fa-train"></i> Railway Exams</a></li>
+                        <li><a href="banking.html"><i class="fas fa-landmark"></i> Banking Exams</a></li>
+                        <li><a href="defense.html"><i class="fas fa-shield-alt"></i> Defense Exams</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+                        <li><a href="contact.html"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
+                        <li><a href="#"><i class="fas fa-exclamation-circle"></i> Report Issue</a></li>
+                        <li><a href="#"><i class="fas fa-comments"></i> Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-user-shield"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                        <li><a href="#"><i class="fas fa-cookie"></i> Cookie Policy</a></li>
+                        <li><a href="#"><i class="fas fa-gavel"></i> Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 SSC Prep Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+  
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     <!-- Bottom Menu -->
+    <div class="bottom-menu">
+        <a href="index-home.html" class="bottom-menu-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="chapter-wise.html" class="bottom-menu-item">
+            <i class="fas fa-book"></i>
+            <span>chapterwise</span>
+        </a>
+        <a href="mock-test.html" class="bottom-menu-item">
+            <i class="fas fa-file-alt"></i>
+            <span>Mock Tests</span>
+        </a>
+        <a href="pyq-paper.html" class="bottom-menu-item active">
+            <i class="fas fa-file-alt"></i>
+            <span>PYQ Papers</span>
+        </a>
+        <a href="chat-ai.html" class="bottom-menu-item">
+            <i class="fas fa-user"></i>
+            <span>chat with AI</span>
+        </a>
+    </div>
+
+            
+            
+            
+   <script>
+        // Sample data for papers with proper links
+        const papersData = [
+            // SSC Papers
+            { 
+                id: 1, 
+                category: "ssc", 
+                examType: "ssc-cgl", 
+                title: "SSC CGL Tier I 2023", 
+                year: "2023", 
+                questions: 100, 
+                description: "Latest SSC CGL preliminary examination with detailed solutions.", 
+                badge: "New",
+                viewLink: "ssc-cgl-2023.html",
+                downloadLink: "downloads/ssc-cgl-2023.pdf"
+            },
+            { 
+                id: 2, 
+                category: "ssc", 
+                examType: "ssc-cgl-tier2", 
+                title: "SSC CGL Tier II 2023", 
+                year: "2023", 
+                questions: 200, 
+                description: "Latest SSC CGL Tier II examination with quantitative aptitude and English sections.", 
+                badge: "New",
+                viewLink: "ssc-cgl-tier2-2023.html",
+                downloadLink: "downloads/ssc-cgl-tier2-2023.pdf"
+            },
+            { 
+                id: 3, 
+                category: "ssc", 
+                examType: "ssc-cgl", 
+                title: "SSC CGL Tier II 2022", 
+                year: "2022", 
+                questions: 200, 
+                description: "Complete Tier II paper with quantitative aptitude and English sections.", 
+                badge: "Popular",
+                viewLink: "ssc-cgl-2022.html",
+                downloadLink: "downloads/ssc-cgl-2022.pdf"
+            },
+            { 
+                id: 4, 
+                category: "ssc", 
+                examType: "ssc-chsl", 
+                title: "SSC CHSL 2022", 
+                year: "2022", 
+                questions: 100, 
+                description: "Combined Higher Secondary Level examination with answer key.", 
+                badge: "Solved",
+                viewLink: "ssc-chsl-2022.html",
+                downloadLink: "downloads/ssc-chsl-2022.pdf"
+            },
+            { 
+                id: 5, 
+                category: "ssc", 
+                examType: "ssc-chsl-tier2", 
+                title: "SSC CHSL Tier II 2022", 
+                year: "2022", 
+                questions: 150, 
+                description: "SSC CHSL Tier II descriptive paper with detailed solutions.", 
+                badge: "Solved",
+                viewLink: "ssc-chsl-tier2-2022.html",
+                downloadLink: "downloads/ssc-chsl-tier2-2022.pdf"
+            },
+            { 
+                id: 6, 
+                category: "ssc", 
+                examType: "ssc-mts", 
+                title: "SSC MTS 2021", 
+                year: "2021", 
+                questions: 100, 
+                description: "Multi-Tasking Staff paper with detailed explanations.", 
+                badge: "Free",
+                viewLink: "ssc-mts-2021.html",
+                downloadLink: "downloads/ssc-mts-2021.pdf"
+            },
+            
+            // Railway Papers
+            { 
+                id: 7, 
+                category: "railway", 
+                examType: "rrb-ntpc", 
+                title: "RRB NTPC CBT I 2023", 
+                year: "2023", 
+                questions: 100, 
+                description: "Railway Recruitment Board NTPC computer-based test paper.", 
+                badge: "New",
+                viewLink: "rrb-ntpc-2023.html",
+                downloadLink: "downloads/rrb-ntpc-2023.pdf"
+            },
+            { 
+                id: 8, 
+                category: "railway", 
+                examType: "rrb-group-d", 
+                title: "RRB Group D 2022", 
+                year: "2022", 
+                questions: 100, 
+                description: "Group D examination with mathematics, reasoning, and general science.", 
+                badge: "Popular",
+                viewLink: "rrb-group-d-2022.html",
+                downloadLink: "downloads/rrb-group-d-2022.pdf"
+            },
+            { 
+                id: 9, 
+                category: "railway", 
+                examType: "rrb-je", 
+                title: "RRB JE CBT I 2021", 
+                year: "2021", 
+                questions: 150, 
+                description: "Junior Engineer examination with technical and non-technical sections.", 
+                badge: "Solved",
+                viewLink: "rrb-je-2021.html",
+                downloadLink: "downloads/rrb-je-2021.pdf"
+            },
+            { 
+                id: 10, 
+                category: "railway", 
+                examType: "rrb-alp", 
+                title: "RRB ALP 2020", 
+                year: "2020", 
+                questions: 75, 
+                description: "Assistant Loco Pilot paper with detailed solutions.", 
+                badge: "Free",
+                viewLink: "rrb-alp-2020.html",
+                downloadLink: "downloads/rrb-alp-2020.pdf"
+            },
+            
+            // Banking Papers
+            { 
+                id: 11, 
+                category: "banking", 
+                examType: "ibps-po", 
+                title: "IBPS PO Prelims 2023", 
+                year: "2023", 
+                questions: 100, 
+                description: "Institute of Banking Personnel Selection PO preliminary examination.", 
+                badge: "New",
+                viewLink: "ibps-po-2023.html",
+                downloadLink: "downloads/ibps-po-2023.pdf"
+            },
+            { 
+                id: 12, 
+                category: "banking", 
+                examType: "ibps-clerk", 
+                title: "IBPS Clerk Prelims 2022", 
+                year: "2022", 
+                questions: 100, 
+                description: "Previous year paper with detailed solutions for banking clerk examination.", 
+                badge: "Popular",
+                viewLink: "ibps-clerk-2022.html",
+                downloadLink: "downloads/ibps-clerk-2022.pdf"
+            },
+            { 
+                id: 13, 
+                category: "banking", 
+                examType: "sbi-po", 
+                title: "SBI PO Prelims 2021", 
+                year: "2021", 
+                questions: 100, 
+                description: "State Bank of India PO preliminary examination with comprehensive solutions.", 
+                badge: "Solved",
+                viewLink: "sbi-po-2021.html",
+                downloadLink: "downloads/sbi-po-2021.pdf"
+            },
+            { 
+                id: 14, 
+                category: "banking", 
+                examType: "sbi-clerk", 
+                title: "SBI Clerk Mains 2020", 
+                year: "2020", 
+                questions: 190, 
+                description: "SBI Clerk mains examination paper with detailed explanations.", 
+                badge: "Popular",
+                viewLink: "sbi-clerk-2020.html",
+                downloadLink: "downloads/sbi-clerk-2020.pdf"
+            },
+            
+            // Defense Papers
+            { 
+                id: 15, 
+                category: "defense", 
+                examType: "cds", 
+                title: "CDS I 2023", 
+                year: "2023", 
+                questions: 120, 
+                description: "Combined Defense Services examination paper with detailed solutions.", 
+                badge: "New",
+                viewLink: "cds-2023.html",
+                downloadLink: "downloads/cds-2023.pdf"
+            },
+            { 
+                id: 16, 
+                category: "defense", 
+                examType: "nda", 
+                title: "NDA I 2022", 
+                year: "2022", 
+                questions: 270, 
+                description: "National Defense Academy examination with mathematics and general ability sections.", 
+                badge: "Popular",
+                viewLink: "nda-2022.html",
+                downloadLink: "downloads/nda-2022.pdf"
+            },
+            { 
+                id: 17, 
+                category: "defense", 
+                examType: "afcat", 
+                title: "AFCAT 2021", 
+                year: "2021", 
+                questions: 100, 
+                description: "Air Force Common Admission Test paper with detailed solutions.", 
+                badge: "Solved",
+                viewLink: "afcat-2021.html",
+                downloadLink: "downloads/afcat-2021.pdf"
+            },
+            { 
+                id: 18, 
+                category: "defense", 
+                examType: "ssb", 
+                title: "SSB Interview Guide", 
+                year: "2023", 
+                questions: 0, 
+                description: "Complete guide for Services Selection Board interview process with tips and techniques.", 
+                badge: "Guide",
+                viewLink: "ssb-guide.html",
+                downloadLink: "downloads/ssb-guide.pdf"
+            },
+            
+            // Medical Papers
+            { 
+                id: 19, 
+                category: "medical", 
+                examType: "neet", 
+                title: "NEET UG 2023", 
+                year: "2023", 
+                questions: 180, 
+                description: "National Eligibility cum Entrance Test with physics, chemistry, and biology sections.", 
+                badge: "New",
+                viewLink: "neet-2023.html",
+                downloadLink: "downloads/neet-2023.pdf"
+            },
+            { 
+                id: 20, 
+                category: "medical", 
+                examType: "aiims", 
+                title: "AIIMS MBBS 2022", 
+                year: "2022", 
+                questions: 200, 
+                description: "All India Institute of Medical Sciences entrance examination paper.", 
+                badge: "Popular",
+                viewLink: "aiims-2022.html",
+                downloadLink: "downloads/aiims-2022.pdf"
+            },
+            { 
+                id: 21, 
+                category: "medical", 
+                examType: "pgimer", 
+                title: "PGIMER 2021", 
+                year: "2021", 
+                questions: 250, 
+                description: "Post Graduate Institute of Medical Education and Research entrance test.", 
+                badge: "Solved",
+                viewLink: "pgimer-2021.html",
+                downloadLink: "downloads/pgimer-2021.pdf"
+            },
+            { 
+                id: 22, 
+                category: "medical", 
+                examType: "fmge", 
+                title: "FMGE June 2020", 
+                year: "2020", 
+                questions: 300, 
+                description: "Foreign Medical Graduate Examination with comprehensive solutions.", 
+                badge: "Solved",
+                viewLink: "fmge-2020.html",
+                downloadLink: "downloads/fmge-2020.pdf"
+            }
+        ];
+
+        // Function to render papers based on filters
+        function renderPapers(category = "all", examType = "all", year = "all") {
+            const papersContainer = document.getElementById('papers-container');
+            papersContainer.innerHTML = '';
+            
+            const filteredPapers = papersData.filter(paper => {
+                return (category === "all" || paper.category === category) &&
+                       (examType === "all" || paper.examType === examType) &&
+                       (year === "all" || paper.year === year);
+            });
+            
+            if (filteredPapers.length === 0) {
+                papersContainer.innerHTML = '<div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 30px; color: #666; background: white; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">No papers found matching your criteria. Try adjusting your filters.</div>';
+                return;
+            }
+            
+            filteredPapers.forEach(paper => {
+                const paperCard = document.createElement('div');
+                paperCard.className = 'paper-card';
+                paperCard.innerHTML = `
+                    <div class="paper-card-header">
+                        <h3>${paper.title}</h3>
+                        <span class="paper-badge">${paper.badge}</span>
+                    </div>
+                    <div class="paper-card-content">
+                        <div class="paper-meta">
+                            <div class="paper-meta-item">
+                                <i class="far fa-calendar-alt"></i> ${paper.year}
+                            </div>
+                            <div class="paper-meta-item">
+                                <i class="far fa-file-alt"></i> ${paper.questions} Questions
+                            </div>
+                        </div>
+                        <p>${paper.description}</p>
+                        <div class="paper-actions">
+                            <a href="${paper.viewLink}" class="btn btn-primary"><i class="fas fa-eye"></i> View Paper</a>
+                            <a href="${paper.downloadLink}" class="btn btn-outline"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                `;
+                papersContainer.appendChild(paperCard);
+            });
+        }
+
+        // Initialize with all papers
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPapers();
+            
+            // Category tab functionality
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    // For demo purposes, prevent actual navigation
+                    e.preventDefault();
+                    
+                    // Remove active class from all tabs
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Get category from data attribute
+                    const category = this.getAttribute('data-category');
+                    
+                    // Update exam type filter based on category
+                    const examTypeFilter = document.getElementById('exam-type');
+                    if (category === 'all') {
+                        examTypeFilter.value = 'all';
+                    } else if (category === 'ssc') {
+                        examTypeFilter.value = 'ssc-cgl';
+                    } else if (category === 'railway') {
+                        examTypeFilter.value = 'rrb-ntpc';
+                    } else if (category === 'banking') {
+                        examTypeFilter.value = 'ibps-po';
+                    } else if (category === 'defense') {
+                        examTypeFilter.value = 'cds';
+                    } else if (category === 'medical') {
+                        examTypeFilter.value = 'neet';
+                    }
+                    
+                    // Render papers with new filters
+                    const yearFilter = document.getElementById('year').value;
+                    renderPapers(category, examTypeFilter.value, yearFilter);
+                });
+            });
+            
+            // Filter functionality
+            const examFilter = document.getElementById('exam-type');
+            const yearFilter = document.getElementById('year');
+            const languageFilter = document.getElementById('language');
+            
+            function filterPapers() {
+                const examValue = examFilter.value;
+                const yearValue = yearFilter.value;
+                
+                // Determine category from exam value
+                let categoryValue = "all";
+                if (examValue.startsWith('ssc-')) categoryValue = "ssc";
+                else if (examValue.startsWith('rrb-')) categoryValue = "railway";
+                else if (examValue.startsWith('ibps-') || examValue.startsWith('sbi-')) categoryValue = "banking";
+                else if (['cds', 'nda', 'afcat', 'ssb'].includes(examValue)) categoryValue = "defense";
+                else if (['neet', 'aiims', 'pgimer', 'fmge'].includes(examValue)) categoryValue = "medical";
+                
+                // Update active category tab
+                categoryTabs.forEach(tab => {
+                    if (tab.getAttribute('data-category') === categoryValue) {
+                        tab.classList.add('active');
+                    } else {
+                        tab.classList.remove('active');
+                    }
+                });
+                
+                renderPapers(categoryValue, examValue, yearValue);
+            }
+            
+            examFilter.addEventListener('change', filterPapers);
+            yearFilter.addEventListener('change', filterPapers);
+            languageFilter.addEventListener('change', filterPapers);
+            
+            // Search functionality
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const allPaperCards = document.querySelectorAll('.paper-card');
+                
+                allPaperCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```

@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>RRB NTPC Test Series | Professional Practice Platform</title> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+  <style>
+        :root {
+            --primary: #1a237e;
+            --primary-light: #534bae;
+            --secondary: #ff6d00;
+            --secondary-light: #ff9e40;
+            --dark: #0d1440;
+            --light: #f5f7ff;
+            --text: #333;
+            --text-light: #666;
+            --border: #e0e0e0;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --card-bg: #ffffff;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7ff 0%, #e3e9ff 100%);
+            color: var(--text);
+            line-height: 1.5;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 12px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 22px;
+            color: var(--secondary-light);
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 6px 0;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: white;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 30px 0 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 28px;
+            color: var(--dark);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 14px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 14px 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-left: 3px solid var(--primary);
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Test Grid */
+        .section-title {
+            font-size: 18px;
+            color: var(--dark);
+            margin: 25px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+            font-weight: 600;
+        }
+
+        .tests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .test-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .test-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .test-header {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 12px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .test-title {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .test-number {
+            background: var(--secondary);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .test-content {
+            padding: 14px;
+        }
+
+        .test-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-bottom: 3px;
+        }
+
+        .detail-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .test-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            flex: 1;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--dark);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(26, 35, 126, 0.05);
+        }
+
+        .btn-icon {
+            font-size: 11px;
+        }
+
+        /* Difficulty Badges */
+        .difficulty {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .difficulty-easy {
+            background: rgba(76, 175, 80, 0.15);
+            color: var(--success);
+        }
+
+        .difficulty-medium {
+            background: rgba(255, 152, 0, 0.15);
+            color: var(--warning);
+        }
+
+        .difficulty-hard {
+            background: rgba(244, 67, 54, 0.15);
+            color: #f44336;
+        }
+
+        .difficulty-mixed {
+            background: rgba(103, 58, 183, 0.15);
+            color: #673ab7;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .tests-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Micro-interactions */
+        .test-card {
+            position: relative;
+        }
+
+        .test-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--secondary-light) 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .test-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Compact design elements */
+        .compact * {
+            /* Ensuring all elements are compact */
+        }
+    </style> 
+ </head> 
+ <body> 
+  <header> 
+   <div class="container"> 
+    <div class="header-content"> 
+     <div class="logo"> 
+      <div class="logo-icon"> <i class="fas fa-train"></i> 
+      </div> 
+      <div class="logo-text">
+       RRB NTPC Test Series
+      </div> 
+     </div> 
+     <div class="nav-links"> <a href="#" class="nav-link active">Tests</a> <a href="#" class="nav-link">Analysis</a> <a href="#" class="nav-link">Rankings</a> <a href="#" class="nav-link">Resources</a> 
+     </div> 
+    </div> 
+   </div> 
+  </header> 
+  <main class="container"> 
+   <section class="hero"> 
+    <h1>RRB NTPC Test Series 2023</h1> 
+    <p>Practice with our carefully curated tests designed by experts to match the latest RRB NTPC exam pattern</p> 
+   </section> 
+   <section class="stats"> 
+    <div class="stat-card"> 
+     <div class="stat-value">
+      100
+     </div> 
+     <div class="stat-label">
+      Questions per Test
+     </div> 
+    </div> 
+    <div class="stat-card"> 
+     <div class="stat-value">
+      90 min
+     </div> 
+     <div class="stat-label">
+      Time Duration
+     </div> 
+    </div> 
+    <div class="stat-card"> 
+     <div class="stat-value">
+      100
+     </div> 
+     <div class="stat-label">
+      Maximum Marks
+     </div> 
+    </div> 
+    <div class="stat-card"> 
+     <div class="stat-value">
+      -0.33
+     </div> 
+     <div class="stat-label">
+      Negative Marking
+     </div> 
+    </div> 
+   </section> 
+   <h2 class="section-title">Practice Tests (1-9)</h2> 
+   <div class="tests-grid" id="tests-container"> 
+    <!-- Test 1 -->
+    <div class="test-card">
+      <div class="test-header">
+        <div class="test-title">Mathematics & Quantitative Aptitude</div>
+        <div class="test-number">1</div>
+      </div>
+      <div class="test-content">
+        <div class="test-details">
+          <div class="detail-item">
+            <span class="detail-label">Questions</span>
+            <span class="detail-value">30</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Time (min)</span>
+            <span class="detail-value">27</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Marks</span>
+            <span class="detail-value">30</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Difficulty</span>
+            <span class="detail-value"><span class="difficulty difficulty-easy">Easy</span></span>
+          </div>
+        </div>
+        <p style="font-size: 11px; color: var(--text-light); margin-bottom: 12px;">Focus on basic arithmetic, algebra, and geometry</p>
+        <div class="test-actions">
+          <a href="rrb-ntpc-1-syllabus.html" class="btn btn-outline">
+            <i class="fas fa-book-open btn-icon"></i>
+            Syllabus
+          </a>
+          <a href="rrb-ntpc-1.html" class="btn btn-primary">
+            <i class="fas fa-play-circle btn-icon"></i>
+            Start Test
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Test 2 -->
+    <div class="test-card">
+      <div class="test-header">
+        <div class="test-title">General Intelligence & Reasoning</div>
+        <div class="test-number">2</div>
+      </div>
+      <div class="test-content">
+        <div class="test-details">
+          <div class="detail-item">
+            <span class="detail-label">Questions</span>
+            <span class="detail-value">30</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Time (min)</span>
+            <span class="detail-value">27</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Marks</span>
+            <span class="detail-value">30</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Difficulty</span>
+            <span class="detail-value"><span class="difficulty difficulty-easy">Easy</span></span>
+          </div>
+        </div>
+        <p style="font-size: 11px; color: var(--text-light); margin-bottom: 12px;">Verbal and non-verbal reasoning questions</p>
+        <div class="test-actions">
+          <a href="rrb-ntpc-2-syllabus.html" class="btn btn-outline">
+            <i class="fas fa-book-open btn-icon"></i>
+            Syllabus
+          </a>
+          <a href="rrb-ntpc-2.html" class="btn btn-primary">
+            <i class="fas fa-play-circle btn-icon"></i>
+            Start Test
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Test 3 -->
+    <div class="test-card">
+      <div class="test-header">
+        <div class="test-title">General Awareness</div>
+        <div class="test-number">3</div>
+      </div>
+      <div class="test-content">
+        <div class="test-details">
+          <div class="detail-item">
+            <span class="detail-label">Questions</span>
+            <span class="detail-value">40</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Time (min)</span>
+            <span class="detail-value">36</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Marks</span>
+            <span class="detail-value">40</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Difficulty</span>
+            <span class="detail-value"><span class="difficulty difficulty-medium">Medium</span></span>
+          </div>
+        </div>
+        <p style="font-size: 11px; color: var(--text-light); margin-bottom: 12px;">Current affairs, history, geography, and politics</p>
+        <div class="test-actions">
+          <a href="rrb-ntpc-3-syllabus.html" class="btn btn-outline">
+            <i class="fas fa-book-open btn-icon"></i>
+            Syllabus
+          </a>
+          <a href="rrb-ntpc-3.html" class="btn btn-primary">
+            <i class="fas fa-play-circle btn-icon"></i>
+            Start Test
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Test 4 -->
+    <div class="test-card">
+      <div class="test-header">
+        <div class="test-title">Full Length Mock Test - 1</div>
+        <div class="test-number">4</div>
+      </div>
+      <div class="test-content">
+        <div class="test-details">
+          <div class="detail-item">
+            <span class="detail-label">Questions</span>
+            <span class="detail-value">100</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Time (min)</span>
+            <span class="detail-value">90</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Marks</span>
+            <span class="detail-value">100</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Difficulty</span>
+            <span class="detail-value"><span class="difficulty difficulty-medium">Medium</span></span>
+          </div>
+        </div>
+        <p style="font-size: 11px; color: var(--text-light); margin-bottom: 12px;">Complete test as per actual exam pattern</p>
+        <div class="test-actions">
+          <a href="rrb-ntpc-4-syllabus.html" class="btn btn-outline">
+            <i class="fas fa-book-open btn-icon"></i>
+            Syllabus
+          </a>
+          <a href="rrb-ntpc-4.html" class="btn btn-primary">
+            <i class="fas fa-play-circle btn-icon"></i>
+            Start Test
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Test 5 -->
+    <div class="test-card">
+      <div class="test-header">
+        <div class="test-title">Mathematics Advanced</div>
+        <div class="test-number">5</div>
+      </div>
+      <div class="test-content">
+        <div class="test-details">
+          <div class="detail-item">
+            <span class="detail-label">Questions</span>
+            <span class="detail-value">35</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Time (min)</span>
+            <span class="detail-value">31</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Marks</span>
+            <span class="detail-value">35</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Difficulty</span>
+            <span class="detail-value"><span class="difficulty difficulty-hard">Hard</span></span>
+          </div>
+        </div>
+        <p style="font-size: 11px; color: var(--text-light); margin-bottom: 12px;">Advanced level quantitative aptitude</p>
+        <div class="test-actions">
+          <a href="rrb-ntpc-5-syllabus.html" class="btn btn-outline">
+            <i class="fas fa-book-open btn-icon"></i>
+            Syllabus
+          </a>
+          <a href="rrb-ntpc-5.html" class="btn btn-primary">
+            <i class="fas fa-play-circle btn-icon"></i>
+            Start Test
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- Test 6 -->
+    <div class="test-card">
+      <div class="test-header">
+        <div class="test-title">Reasoning Advanced</div>
+        <div class="test-number">6</div>
+      </div>
+      <div class="test-content">
+        <div class="test-details">
+          <div class="detail-item">
+            <span class="detail-label">Questions</span>
+            <span class="detail-value">35</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Time (min)</span>
+            <span class="detail-value">31</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Marks</span>
+            <span class="detail-value">35</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Difficulty</span>
+            <span class="detail-value"><span class="difficulty difficulty-hard">Hard</span></span>
+          </div>
+        </div>
+        <p style="font-size: 11px; color: var(--text-light); margin-bottom: 12px;">Complex reasoning and analytical questions</p>
+        <div class="test-actions">
+          <a href="rrb-ntpc-6-syllabus.html" class="btn btn-outline">
+            <i class="fas fa-book-open btn-icon"></i>
+            Syllabus
+          </a>
+          <a href="rrb-ntpc-6.html" class="btn btn-primary">
+            <i class="fas fa-play-circle btn-icon"></i>
+            Start Test
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Test 7 -->
+    <div class="test-card">
+      <div class="test-header">
+        <div class="test-title">Full Length Mock Test - 2</div>
+        <div class="test-number">7</div>
+      </div>
+      <div class="test-content">
+        <div class="test-details">
+          <div class="detail-item">
+            <span class="detail-label">Questions</span>
+            <span class="detail-value">100</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Time (min)</span>
+            <span class="detail-value">90</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Marks</span>
+            <span class="detail-value">100</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Difficulty</span>
+            <span class="detail-value"><span class="difficulty difficulty-hard">Hard</span></span>
+          </div>
+        </div>
+        <p style="font-size: 11px; color: var(--text-light); margin-bottom: 12px;">Higher difficulty full-length test</p>
+        <div class="test-actions">
+          <a href="rrb-ntpc-7-syllabus.html" class="btn btn-outline">
+            <i class="fas fa-book-open btn-icon"></i>
+            Syllabus
+          </a>
+          <a href="rrb-ntpc-7.html" class="btn btn-primary">
+            <i class="fas fa-play-circle btn-icon"></i>
+            Start Test
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Test 8 -->
+    <div class="test-card">
+      <div class="test-header">
+        <div class="test-title">Previous Year Pattern</div>
+        <div class="test-number">8</div>
+      </div>
+      <div class="test-content">
+        <div class="test-details">
+          <div class="detail-item">
+            <span class="detail-label">Questions</span>
+            <span class="detail-value">100</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Time (min)</span>
+            <span class="detail-value">90</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Marks</span>
+            <span class="detail-value">100</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Difficulty</span>
+            <span class="detail-value"><span class="difficulty difficulty-mixed">Mixed</span></span>
+          </div>
+        </div>
+        <p style="font-size: 11px; color: var(--text-light); margin-bottom: 12px;">Based on last year's question papers</p>
+        <div class="test-actions">
+          <a href="rrb-ntpc-8-syllabus.html" class="btn btn-outline">
+            <i class="fas fa-book-open btn-icon"></i>
+            Syllabus
+          </a>
+          <a href="rrb-ntpc-8.html" class="btn btn-primary">
+            <i class="fas fa-play-circle btn-icon"></i>
+            Start Test
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Test 9 -->
+    <div class="test-card">
+      <div class="test-header">
+        <div class="test-title">Final Revision Test</div>
+        <div class="test-number">9</div>
+      </div>
+      <div class="test-content">
+        <div class="test-details">
+          <div class="detail-item">
+            <span class="detail-label">Questions</span>
+            <span class="detail-value">100</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Time (min)</span>
+            <span class="detail-value">90</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Marks</span>
+            <span class="detail-value">100</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Difficulty</span>
+            <span class="detail-value"><span class="difficulty difficulty-mixed">Mixed</span></span>
+          </div>
+        </div>
+        <p style="font-size: 11px; color: var(--text-light); margin-bottom: 12px;">Comprehensive test for final revision</p>
+        <div class="test-actions">
+          <a href="rrb-ntpc-9-syllabus.html" class="btn btn-outline">
+            <i class="fas fa-book-open btn-icon"></i>
+            Syllabus
+          </a>
+          <a href="rrb-ntpc-9.html" class="btn btn-primary">
+            <i class="fas fa-play-circle btn-icon"></i>
+            Start Test
+          </a>
+        </div>
+      </div>
+    </div>
+   </div> 
+  </main> 
+  <footer> 
+   <div class="container"> 
+    <div class="footer-content"> 
+     <div class="copyright">
+       © 2023 RRB NTPC Test Series. All rights reserved. 
+     </div> 
+     <div class="footer-links"> <a href="#" class="footer-link">Privacy Policy</a> <a href="#" class="footer-link">Terms of Service</a> <a href="#" class="footer-link">Contact Us</a> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+ </body>
+</html>
+```

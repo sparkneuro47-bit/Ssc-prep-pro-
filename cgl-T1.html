@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSC CGL Mock Tests</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #8e44ad, #3498db);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+        
+        .test-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .test-header {
+            background: #3498db;
+            color: white;
+            padding: 0.8rem;
+            text-align: center;
+        }
+        
+        .test-header h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .test-content {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .test-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-size: 0.8rem;
+        }
+        
+        .test-stats span {
+            background: #e8f4fc;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .test-sections {
+            margin: 0.5rem 0;
+            flex-grow: 1;
+        }
+        
+        .section-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
+        }
+        
+        .section-item:last-child {
+            border-bottom: none;
+        }
+        
+        .section-name {
+            font-weight: 600;
+        }
+        
+        .section-questions {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            width: 100%;
+            margin-top: 8px;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+        }
+        
+        .btn-start {
+            background: #2ecc71;
+        }
+        
+        .btn-start:hover {
+            background: #27ae60;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            background: #2c3e50;
+            color: white;
+        }
+        
+        .timer {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 0.3rem;
+            font-size: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>CGL tear 1 Exam's New Pattern Based Mock Test</h1>
+            <p>SSC CGL Preparation Platform</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="test-grid">
+            <!-- Mock Test 1 -->
+            <div class="test-card">
+                <div class="test-header">
+                    <h3>Mock Test 1</h3>
+                    <div class="timer">Total Time: 75 minutes</div>
+                </div>
+                <div class="test-content">
+                    <div class="test-stats">
+                        <span>5 Sections</span>
+                        <span>125 Questions</span>
+                        <span>75 Minutes</span>
+                    </div>
+                    
+                    <div class="test-sections">
+                        <div class="section-item">
+                            <div class="section-name">General Intelligence & Reasoning</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">General Awareness</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">Quantitative Aptitude</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">English Comprehension</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">Advanced Mathematics</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                    </div>
+                    <a href="test1.html" class="btn btn-start">Start Test 1</a>
+                </div>
+            </div>
+            
+            <!-- Mock Test 2 -->
+            <div class="test-card">
+                <div class="test-header">
+                    <h3>Mock Test 2</h3>
+                    <div class="timer">Total Time: 75 minutes</div>
+                </div>
+                <div class="test-content">
+                    <div class="test-stats">
+                        <span>5 Sections</span>
+                        <span>125 Questions</span>
+                        <span>75 Minutes</span>
+                    </div>
+                    
+                    <div class="test-sections">
+                        <div class="section-item">
+                            <div class="section-name">General Intelligence & Reasoning</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">General Awareness</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">Quantitative Aptitude</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">English Comprehension</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">Advanced Mathematics</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                    </div>
+                    <a href="test2.html" class="btn btn-start">Start Test 2</a>
+                </div>
+            </div>
+            
+            <!-- Mock Test 3 -->
+            <div class="test-card">
+                <div class="test-header">
+                    <h3>Mock Test 3</h3>
+                    <div class="timer">Total Time: 75 minutes</div>
+                </div>
+                <div class="test-content">
+                    <div class="test-stats">
+                        <span>5 Sections</span>
+                        <span>125 Questions</span>
+                        <span>75 Minutes</span>
+                    </div>
+                    
+                    <div class="test-sections">
+                        <div class="section-item">
+                            <div class="section-name">General Intelligence & Reasoning</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">General Awareness</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">Quantitative Aptitude</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">English Comprehension</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">Advanced Mathematics</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                    </div>
+                    <a href="test3.html" class="btn btn-start">Start Test 3</a>
+                </div>
+            </div>
+            
+            <!-- Mock Test 4 -->
+            <div class="test-card">
+                <div class="test-header">
+                    <h3>Mock Test 4</h3>
+                    <div class="timer">Total Time: 75 minutes</div>
+                </div>
+                <div class="test-content">
+                    <div class="test-stats">
+                        <span>5 Sections</span>
+                        <span>125 Questions</span>
+                        <span>75 Minutes</span>
+                    </div>
+                    
+                    <div class="test-sections">
+                        <div class="section-item">
+                            <div class="section-name">General Intelligence & Reasoning</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">General Awareness</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">Quantitative Aptitude</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">English Comprehension</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">Advanced Mathematics</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                    </div>
+                    <a href="test4.html" class="btn btn-start">Start Test 4</a>
+                </div>
+            </div>
+            
+            <!-- Mock Test 5 -->
+            <div class="test-card">
+                <div class="test-header">
+                    <h3>Mock Test 5</h3>
+                    <div class="timer">Total Time: 75 minutes</div>
+                </div>
+                <div class="test-content">
+                    <div class="test-stats">
+                        <span>5 Sections</span>
+                        <span>125 Questions</span>
+                        <span>75 Minutes</span>
+                    </div>
+                    
+                    <div class="test-sections">
+                        <div class="section-item">
+                            <div class="section-name">General Intelligence & Reasoning</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">General Awareness</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">Quantitative Aptitude</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">English Comprehension</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">Advanced Mathematics</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                    </div>
+                    <a href="test5.html" class="btn btn-start">Start Test 5</a>
+                </div>
+            </div>
+            
+            <!-- Mock Test 6 -->
+            <div class="test-card">
+                <div class="test-header">
+                    <h3>Mock Test 6</h3>
+                    <div class="timer">Total Time: 75 minutes</div>
+                </div>
+                <div class="test-content">
+                    <div class="test-stats">
+                        <span>5 Sections</span>
+                        <span>125 Questions</span>
+                        <span>75 Minutes</span>
+                    </div>
+                    
+                    <div class="test-sections">
+                        <div class="section-item">
+                            <div class="section-name">General Intelligence & Reasoning</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">General Awareness</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">Quantitative Aptitude</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">English Comprehension</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                        <div class="section-item">
+                            <div class="section-name">Advanced Mathematics</div>
+                            <div class="section-questions">25 Q</div>
+                        </div>
+                    </div>
+                    <a href="test6.html" class="btn btn-start">Start Test 6</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 SSC CGL Mock Test Platform | Designed for SSC Aspirants</p>
+        </div>
+    </footer>
+</body>
+</html>

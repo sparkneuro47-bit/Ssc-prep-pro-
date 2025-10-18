@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Compact Mock Test Dashboard</title> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.5;
+            padding: 15px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 15px;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .chapter-info {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .chapter-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        
+        .chapter-details h2 {
+            margin-bottom: 3px;
+            color: #333;
+            font-size: 1.2rem;
+        }
+        
+        .chapter-details p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-tab {
+            padding: 8px 16px;
+            background: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .filter-tab.active {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+        }
+        
+        .tests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .test-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .test-header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .test-header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+        }
+        
+        .test-number {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin-bottom: 3px;
+        }
+        
+        .test-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .test-difficulty {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .difficulty-easy {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+        }
+        
+        .difficulty-medium {
+            background: rgba(255, 152, 0, 0.2);
+            color: #ff9800;
+        }
+        
+        .difficulty-hard {
+            background: rgba(244, 67, 54, 0.2);
+            color: #f44336;
+        }
+        
+        .test-details {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .test-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .info-item {
+            text-align: center;
+        }
+        
+        .info-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: #333;
+        }
+        
+        .info-label {
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .test-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            flex-grow: 1;
+        }
+        
+        .test-link {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .test-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(106, 17, 203, 0.3);
+        }
+        
+        .test-link i {
+            margin-left: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 15px;
+            color: #666;
+            font-size: 0.85rem;
+        }
+        
+        @media (max-width: 768px) {
+            .tests-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chapter-info {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.7rem;
+            }
+            
+            .test-header {
+                padding: 12px 15px;
+            }
+            
+            .test-details {
+                padding: 12px 15px;
+            }
+            
+            .filter-tabs {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 10px;
+                margin-bottom: 15px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .tests-grid {
+                gap: 12px;
+            }
+        }
+    </style> 
+ </head> 
+ <body> 
+  <div class="container"> 
+   <header> 
+    <h1>Mock Test Dashboard</h1> 
+    <p class="subtitle">Practice with our comprehensive mock tests to enhance your preparation</p> 
+   </header> 
+   <div class="chapter-info"> 
+    <div class="chapter-icon"> <i class="fas fa-book-open"></i> 
+    </div> 
+    <div class="chapter-details"> 
+     <h2>Number Systems</h2> 
+     <p>Complete chapter with 6 mock tests covering all important topics and question patterns.</p> 
+    </div> 
+   </div> 
+   
+   <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All Tests</button>
+        <button class="filter-tab" data-filter="easy">Easy</button>
+        <button class="filter-tab" data-filter="medium">Medium</button>
+        <button class="filter-tab" data-filter="hard">Hard</button>
+    </div>
+   
+   <div class="tests-grid"> 
+    <!-- Mock Test 1 --> 
+    <div class="test-card" data-difficulty="easy"> 
+     <div class="test-header"> 
+      <div class="test-number">Mock Test 1</div> 
+      <h3 class="test-title">Fundamentals Assessment</h3> 
+      <span class="test-difficulty difficulty-easy">Easy</span> 
+     </div> 
+     <div class="test-details"> 
+      <div class="test-info"> 
+       <div class="info-item"> 
+        <div class="info-value">20</div> 
+        <div class="info-label">Questions</div> 
+       </div> 
+       <div class="info-item"> 
+        <div class="info-value">30:00</div> 
+        <div class="info-label">Time</div> 
+       </div> 
+       <div class="info-item"> 
+        <div class="info-value">100</div> 
+        <div class="info-label">Marks</div> 
+       </div> 
+      </div> 
+      <p class="test-description">Covers basic concepts and foundational knowledge. Perfect for beginners.</p> 
+      <a href="test-page2.html" class="test-link">Start Test <i class="fas fa-arrow-right"></i></a> 
+     </div> 
+    </div> 
+    
+    <!-- Mock Test 2 --> 
+    <div class="test-card" data-difficulty="medium"> 
+     <div class="test-header"> 
+      <div class="test-number">Mock Test 2</div> 
+      <h3 class="test-title">Intermediate Challenge</h3> 
+      <span class="test-difficulty difficulty-medium">Medium</span> 
+     </div> 
+     <div class="test-details"> 
+      <div class="test-info"> 
+       <div class="info-item"> 
+        <div class="info-value">25</div> 
+        <div class="info-label">Questions</div> 
+       </div> 
+       <div class="info-item"> 
+        <div class="info-value">40:00</div> 
+        <div class="info-label">Time</div> 
+       </div> 
+       <div class="info-item"> 
+        <div class="info-value">125</div> 
+        <div class="info-label">Marks</div> 
+       </div> 
+      </div> 
+      <p class="test-description">Builds on fundamentals with moderate difficulty questions.</p> 
+      <a href="test-page1.html" class="test-link">Start Test <i class="fas fa-arrow-right"></i></a> 
+     </div> 
+    </div> 
+    
+    <!-- Mock Test 3 --> 
+    <div class="test-card" data-difficulty="medium"> 
+     <div class="test-header"> 
+      <div class="test-number">Mock Test 3</div> 
+      <h3 class="test-title">Advanced Practice</h3> 
+      <span class="test-difficulty difficulty-medium">Medium</span> 
+     </div> 
+     <div class="test-details"> 
+      <div class="test-info"> 
+       <div class="info-item"> 
+        <div class="info-value">30</div> 
+        <div class="info-label">Questions</div> 
+       </div> 
+       <div class="info-item"> 
+        <div class="info-value">45:00</div> 
+        <div class="info-label">Time</div> 
+       </div> 
+       <div class="info-item"> 
+        <div class="info-value">150</div> 
+        <div class="info-label">Marks</div> 
+       </div> 
+      </div> 
+      <p class="test-description">Challenging questions to test your in-depth understanding.</p> 
+      <a href="test-page3.html" class="test-link">Start Test <i class="fas fa-arrow-right"></i></a> 
+     </div> 
+    </div> 
+    
+    <!-- Mock Test 4 --> 
+    <div class="test-card" data-difficulty="hard"> 
+     <div class="test-header"> 
+      <div class="test-number">Mock Test 4</div> 
+      <h3 class="test-title">Comprehensive Review</h3> 
+      <span class="test-difficulty difficulty-hard">Hard</span> 
+     </div> 
+     <div class="test-details"> 
+      <div class="test-info"> 
+       <div class="info-item"> 
+        <div class="info-value">35</div> 
+        <div class="info-label">Questions</div> 
+       </div> 
+       <div class="info-item"> 
+        <div class="info-value">50:00</div> 
+        <div class="info-label">Time</div> 
+       </div> 
+       <div class="info-item"> 
+        <div class="info-value">175</div> 
+        <div class="info-label">Marks</div> 
+       </div> 
+      </div> 
+      <p class="test-description">Covers the entire syllabus with time-bound questions.</p> 
+      <a href="test-page4.html" class="test-link">Start Test <i class="fas fa-arrow-right"></i></a> 
+     </div> 
+    </div> 
+    
+    <!-- Mock Test 5 --> 
+    <div class="test-card" data-difficulty="hard"> 
+     <div class="test-header"> 
+      <div class="test-number">Mock Test 5</div> 
+      <h3 class="test-title">Expert Level</h3> 
+      <span class="test-difficulty difficulty-hard">Hard</span> 
+     </div> 
+     <div class="test-details"> 
+      <div class="test-info"> 
+       <div class="info-item"> 
+        <div class="info-value">40</div> 
+        <div class="info-label">Questions</div> 
+       </div> 
+       <div class="info-item"> 
+        <div class="info-value">60:00</div> 
+        <div class="info-label">Time</div> 
+       </div> 
+       <div class="info-item"> 
+        <div class="info-value">200</div> 
+        <div class="info-label">Marks</div> 
+       </div> 
+      </div> 
+      <p class="test-description">Advanced level questions for high-achieving students.</p> 
+      <a href="test-page5.html" class="test-link">Start Test <i class="fas fa-arrow-right"></i></a> 
+     </div> 
+    </div> 
+    
+    <!-- Mock Test 6 --> 
+    <div class="test-card" data-difficulty="hard"> 
+     <div class="test-header"> 
+      <div class="test-number">Mock Test 6</div> 
+      <h3 class="test-title">Final Assessment</h3> 
+      <span class="test-difficulty difficulty-hard">Hard</span> 
+     </div> 
+     <div class="test-details"> 
+      <div class="test-info"> 
+       <div class="info-item"> 
+        <div class="info-value">50</div> 
+        <div class="info-label">Questions</div> 
+       </div> 
+       <div class="info-item"> 
+        <div class="info-value">75:00</div> 
+        <div class="info-label">Time</div> 
+       </div> 
+       <div class="info-item"> 
+        <div class="info-value">250</div> 
+        <div class="info-label">Marks</div> 
+       </div> 
+      </div> 
+      <p class="test-description">Final comprehensive test simulating actual exam conditions.</p> 
+      <a href="test-page6.html" class="test-link">Start Test <i class="fas fa-arrow-right"></i></a> 
+     </div> 
+    </div> 
+   </div> 
+   <footer> 
+    <p>© 2023 Mock Test Platform. All rights reserved.</p> 
+   </footer> 
+  </div> 
+  <script>
+        // Add click event listeners to all test links
+        document.querySelectorAll('.test-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Only prevent default if we're doing something else
+                // In this case, we'll let the link work normally
+                const testName = this.closest('.test-card').querySelector('.test-title').textContent;
+                console.log(`Starting test: ${testName}`);
+                // The link will naturally redirect to the href
+            });
+        });
+        
+        // Filter functionality
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.filter-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                const testCards = document.querySelectorAll('.test-card');
+                
+                // Show/hide test cards based on filter
+                testCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-difficulty') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script> 
+ </body>
+</html>
